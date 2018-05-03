@@ -321,7 +321,7 @@
       <div class="vs__selected-options" ref="selectedOptions">
         <slot v-for="option in valueAsArray" name="selected-option-container"
               :option="(typeof option === 'object')?option:{[label]: option}" :deselect="deselect" :multiple="multiple" :disabled="disabled">
-          <span class="selected-tag" v-bind:key="option.index">
+          <span class="selected-tag" ref="selectedTag" v-bind:key="option.index">
             <slot name="selected-option" v-bind="(typeof option === 'object')?option:{[label]: option}">
               {{ getOptionLabel(option) }}
             </slot>
@@ -349,6 +349,7 @@
                 :placeholder="searchPlaceholder"
                 :tabindex="tabindex"
                 :readonly="!searchable"
+                :style="{ width: isValueEmpty ? '100%' : 'auto' }"
                 :id="inputId"
                 role="combobox"
                 :aria-expanded="dropdownOpen"
