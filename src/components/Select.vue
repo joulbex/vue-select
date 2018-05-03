@@ -389,7 +389,7 @@
           </a>
         </li>
         <li v-if="!filteredOptions.length" class="no-options" @mousedown.stop="">
-          <slot name="no-options">Sorry, no matching options.</slot>
+          <slot name="no-options">{{ noOptionsLabel }}</slot>
         </li>
       </ul>
     </transition>
@@ -542,6 +542,16 @@
       index: {
         type: String,
         default: null
+      },
+
+      /**
+       * Text displayed when select doesn't have any options or 
+       * there are no filter results.
+       * @type {String}
+       */
+      noOptionsLabel: {
+        type: String,
+        default: 'Sorry, no matching options.'
       },
 
       /**
