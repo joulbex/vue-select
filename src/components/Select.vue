@@ -316,6 +316,7 @@
 
 <template>
   <div :dir="dir" class="dropdown v-select" :class="dropdownClasses">
+    <input type="hidden" :name="name" :value="valueAsScalar">
     <div ref="toggle" @mousedown.prevent="toggleDropdown" class="dropdown-toggle">
 
       <div class="vs__selected-options" ref="selectedOptions">
@@ -405,6 +406,15 @@
     mixins: [pointerScroll, typeAheadPointer, ajax],
 
     props: {
+      /**
+       * Name attribute of the underlaying hidden input.
+       * @type {String}
+       */
+      name: {
+        type: String,
+        default: ''
+      },
+
       /**
        * Contains the currently selected value. Very similar to a
        * `value` attribute on an <input>. You can listen for changes
@@ -1230,6 +1240,18 @@
         }
 
         return []
+      },
+
+      valueAsScalar() {
+        if (!this.multiple){
+          if (this.mutableValue !== null){
+            if ('value' in this.mutableValue){
+              return this.mutableValue.value;
+            }
+          }
+        }
+
+        return null;
       },
 
       /**
