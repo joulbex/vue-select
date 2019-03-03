@@ -83,7 +83,7 @@
   }
   .v-select .vs__actions {
     display: flex;
-    align-items: stretch;
+    align-items: center;
     padding: 0 6px 0 3px;
   }
 
@@ -198,7 +198,6 @@
     border: 1px solid transparent;
     border-left: none;
     outline: none;
-    margin: 4px 0 0 0;
     padding: 0 7px;
     max-width: 100%;
     background: none;
@@ -603,7 +602,7 @@
        * an option is disabled.
        * @type {String}
        */
-      disabled: {
+      disabledkey: {
         type: String,
         default: 'disabled'
       },
@@ -617,8 +616,8 @@
         type: Function,
         default(option) {
           if (typeof option === 'object') {
-            if (this.disabled && option[this.disabled]) {
-              return !!option[this.disabled]  // in case this value is not a boolean value itself
+            if (this.disabledkey && option[this.disabledkey]) {
+              return !!option[this.disabledkey]  // in case this value is not a boolean value itself
             }
           }
           return false;
