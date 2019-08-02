@@ -349,7 +349,6 @@
                 :placeholder="searchPlaceholder"
                 :tabindex="tabindex"
                 :readonly="!searchable"
-                :style="{ width: isValueEmpty ? '100%' : 'auto' }"
                 :id="inputId"
                 role="combobox"
                 :aria-expanded="dropdownOpen"
